@@ -1,5 +1,8 @@
 
+import EdictorToolBar from './EdictorToolbar';
 
+export {
 
-export { };
+    EdictorToolBar
+};
 

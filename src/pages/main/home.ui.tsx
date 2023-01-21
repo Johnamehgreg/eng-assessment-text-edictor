@@ -1,39 +1,32 @@
-import { useState } from "react";
-import { Quill } from 'react-quill';
+import React, { useRef } from "react";
+import ReactQuill from 'react-quill';
+import { EdictorToolBar } from "../../components";
 
 
 const HomeUi = () => {
 
-  var toolbarOptions = ['bold', 'italic', 'underline', 'strike'];
+  const [state, setState] = React.useState({ value: '' });
+  const handleChange = (value: any) => {
+    setState({ value });
+  };
 
 
-  var quill = new Quill('#editor', {
-    modules: {
-      toolbar: {
-        container: '#toolbar',  // Selector for toolbar container
-        handlers: {
-          toolbar: toolbarOptions
-        }
-      }
-    }
-  });
+  const quillRef = useRef(null);
 
-  const [value, setValue] = useState('');
+
+
   return (
-    <>
-      <div id="toolbar">
-        <select className="ql-size">
-          <option value="small"></option>
-          <option selected></option>
-          <option value="large"></option>
-          <option value="huge"></option>
-        </select>
-        <button className="ql-bold"></button>
-        <button className="ql-script" value="sub"></button>
-        <button className="ql-script" value="super"></button>
-      </div>
-      <div id="editor"></div>
-    </>
+    <div className="text-editor">
+      <EdictorToolBar quillRef={quillRef} />
+      <ReactQuill
+        theme="snow"
+        ref={quillRef}
+        value={state.value}
+        onChange={handleChange}
+        placeholder={"Write something awesome..."}
+
+      />
+    </div>
   )
 }
 
