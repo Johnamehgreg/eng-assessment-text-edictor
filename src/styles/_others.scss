@@ -1,84 +1,83 @@
-.hero-widget-wrapper  {
-    @apply h-full
-    w-[100vw] justify-center 
-    items-start pt-[80px] 
-    bg-backgoundColor
-    flex overflow-hidden;
-    // background-color: red;
-}
+// .hero-widget-wrapper  {
+//     @apply h-full
+//     w-[100vw] justify-center 
+//     items-start pt-[80px] 
+//     bg-backgoundColor
+//     flex overflow-hidden;
+//     // background-color: red;
+// }
 
-.hero-widget-card {
-    @apply w-full 
-    
-     rounded-[4px] 
-     py-[24px] 
-     border-[1px] sm:w-10/12
-     md:w-[750px]  border-lightGreen ;
-}
+// .hero-widget-card {
+//     @apply w-full 
+//      rounded-[4px] 
+//      py-[24px] 
+//      border-[1px] sm:w-10/12
+//      md:w-[750px]  border-lightGreen ;
+// }
 
-.plus-btn{
-    @apply bg-borderColor  py-2 mt-2 rounded-[50px] px-2
-}
+// .plus-btn{
+//     @apply bg-borderColor  py-2 mt-2 rounded-[50px] px-2
+// }
 
-.plus-embed-menu-wrapper{
-    @apply border-transparent shadow-lg  ;
-}
+// .plus-embed-menu-wrapper{
+//     @apply border-transparent shadow-lg  ;
+// }
 
-.plus-embed-menu-item{
-   @apply hover:bg-lightGreen  py-1 flex items-start w-full px-2
-}
+// .plus-embed-menu-item{
+//    @apply hover:bg-lightGreen  py-1 flex items-start w-full px-2
+// }
 
-.modal-content{
-   @apply fixed flex top-0 left-0 
-   justify-center 
-   items-center
-   w-full h-full;
-   background-color: rgba(0, 0, 0, 0.289);
-}
+// .modal-content{
+//    @apply fixed flex top-0 left-0 
+//    justify-center 
+//    items-center
+//    w-full h-full;
+//    background-color: rgba(0, 0, 0, 0.289);
+// }
 
-.modal-card {
-    @apply w-full 
-     bg-white
-     rounded-[4px] 
-      sm:w-10/12
-     md:w-[750px] px-6 py-6;
-}
+// .modal-card {
+//     @apply w-full 
+//      bg-white
+//      rounded-[4px] 
+//       sm:w-10/12
+//      md:w-[750px] px-6 py-6;
+// }
 
-.file-upload-container{
-    @apply w-full h-[150px] 
-    flex items-center justify-center
-    rounded-[4px] border-dashed 
-    border-[1px] border-primaryGreen bg-backgoundColor;
+// .file-upload-container{
+//     @apply w-full h-[150px] 
+//     flex items-center justify-center
+//     rounded-[4px] border-dashed 
+//     border-[1px] border-primaryGreen bg-backgoundColor;
 
 
-    button{
-        @apply rounded-[4px] 
-        px-2 py-1 border-[1px] 
-        text-[10px]
-        border-primaryGreen;
-    }
-}
+//     button{
+//         @apply rounded-[4px] 
+//         px-2 py-1 border-[1px] 
+//         text-[10px]
+//         border-primaryGreen;
+//     }
+// }
 
-.primary-btn{
-    @apply transition text-[13px] font-semibold rounded-[4px] px-3 py-2
-}
+// .primary-btn{
+//     @apply transition text-[13px] font-semibold rounded-[4px] px-3 py-2
+// }
 
-.solid-btn {
-    @apply bg-primaryGreen hover:bg-[#114e23]  text-white 
-}
-.outline-btn{
-    @apply bg-white border-[1px] 
-    border-[#CEE3D4] 
-    hover:text-primaryGreen
-    hover:border-primaryGreen  text-black 
-}
+// .solid-btn {
+//     @apply bg-primaryGreen hover:bg-[#114e23]  text-white 
+// }
+// .outline-btn{
+//     @apply bg-white border-[1px] 
+//     border-[#CEE3D4] 
+//     hover:text-primaryGreen
+//     hover:border-primaryGreen  text-black 
+// }
 
-.app-input{
-    @apply
-    focus:border-primaryGreen
-    outline-none
-    h-[35px] rounded-[4px] px-2
-    transition bg-backgoundColor
-    text-[12px]
-     border-[1px] w-full border-lightGreen 
-}
+// .app-input{
+//     @apply
+//     focus:border-primaryGreen
+//     outline-none
+//     h-[35px] rounded-[4px] px-2
+//     transition bg-backgoundColor
+//     text-[12px]
+//      border-[1px] w-full border-lightGreen 
+// }

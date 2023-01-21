@@ -1,10 +1,24 @@
 
+import { useEffect } from 'react';
+import { AiOutlineUnorderedList } from 'react-icons/ai';
+import { BiItalic } from 'react-icons/bi';
+import { BsListOl, BsTypeBold } from 'react-icons/bs';
+import { FaImage } from 'react-icons/fa';
+import { HiOutlineLink } from 'react-icons/hi';
+import { ImParagraphCenter, ImParagraphLeft, ImParagraphRight } from 'react-icons/im';
 
 
 interface Props {
     quillRef: any
+    onPictureClick: () => void
 }
-export const EdictorToolBar: React.FC<Props> = ({ quillRef }) => {
+export const EdictorToolBar: React.FC<Props> = ({ quillRef, onPictureClick }) => {
+
+  
+    useEffect(() => {
+       
+    }, [])
+          
     const undo = () => {
         const quill = quillRef.current.getEditor();
         quill.history.undo();
@@ -55,14 +69,54 @@ export const EdictorToolBar: React.FC<Props> = ({ quillRef }) => {
         return videoId;
     }
 
+    const leftParagraphFunction = () => {
+        let quill = quillRef.current.getEditor();
+        let range = quill.getSelection();
+        quill.format('right-paragraph', true, 'user');
+    }
+
+
 
     return (
-        <div className="toolbar-wrapper" >
+        <div className="toolbar-wrapper " >
 
-            <button onClick={undo}>undo</button> <br />
-            <button onClick={handleImagePickerClick}>Image</button><br />
-            <button onClick={handleYoutubeUrlPickerClick}>Videos</button> <br />
-            <button onClick={handleIFrameUrlPickerClick}>Iframe videos</button>
+            <button onClick={undo}>Paragraph</button>
+
+            <div className="vertical-divider"></div>
+            <button onClick={onPictureClick}>
+                <HiOutlineLink size={16} />
+            </button>
+            <button onClick={onPictureClick}>
+                <FaImage size={16} />
+            </button>
+            <div className="vertical-divider"></div>
+            <button onClick={leftParagraphFunction}>
+                <ImParagraphLeft size={16} />
+            </button>
+            <button onClick={handleIFrameUrlPickerClick}>
+                <ImParagraphCenter size={16} />
+            </button>
+            <button onClick={handleIFrameUrlPickerClick}>
+                <ImParagraphRight size={16} />
+            </button>
+
+            <div className="vertical-divider"></div>
+            <button onClick={handleIFrameUrlPickerClick}>
+                <BsTypeBold size={16} />
+            </button>
+            <button onClick={handleIFrameUrlPickerClick}>
+                <BiItalic size={16} />
+            </button>
+            <div className="vertical-divider"></div>
+            <button onClick={handleIFrameUrlPickerClick}>
+                <AiOutlineUnorderedList size={16} />
+            </button>
+            <button onClick={handleIFrameUrlPickerClick}>
+                <BsListOl size={16} />
+            </button>
+            <button onClick={handleIFrameUrlPickerClick}>
+                <BsListOl size={16} />
+            </button>
         </div>
     )
 }

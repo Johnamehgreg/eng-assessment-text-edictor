@@ -110,7 +110,7 @@ const AppSelect: React.FC<Props> = (props: any) => {
           <input
 
             onInput={(e: any) => e.target.setCustomValidity("")}
-            className="text-gray-400 caret-transparent pointer outline-none bg-transparent  text-[14px]"
+            className="text-black caret-transparent pointer outline-none bg-transparent  text-[14px]"
             value={vle}
             required={false}
 

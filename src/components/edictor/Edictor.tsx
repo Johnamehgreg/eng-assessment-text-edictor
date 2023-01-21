@@ -24,7 +24,9 @@ const Edictor = () => {
 
                 <div className="h-[20px] border-b-[1px] border-b-borderColor " />
                 <div className="px-2 pb-4">
-                    <EdictorToolBar quillRef={quillRef} />
+                    <EdictorToolBar 
+                     onPictureClick={() => setshowPictureModal(true)}
+                    quillRef={quillRef} />
                     <div className=" overflow-y-scroll h-[70vh]">
                         <ReactQuill
                             theme="snow"
