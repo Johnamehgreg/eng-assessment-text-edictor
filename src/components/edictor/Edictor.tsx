@@ -2,17 +2,20 @@ import { useRef, useState } from "react";
 import ReactQuill from "react-quill";
 import { EdictorToolBar, PlusBtn } from '../index';
 import PictureModal from "./PictureModal";
+import SocialModal from "./SocialModal";
 import VideoModal from "./VideoModal";
 
 const Edictor = () => {
 
     const [state, setState] = useState({ value: '' });
     const handleChange = (value: any) => {
-        setState({ value });
+        // setState({ value });
+        console.log(value)
     };
 
     const [showPictureModal, setshowPictureModal] = useState(false)
     const [showVideoModal, setshowVideoModal] = useState(false)
+    const [showSocialModal, setshowSocialModal] = useState(false)
 
     const quillRef = useRef(null);
     return (
@@ -35,7 +38,7 @@ const Edictor = () => {
                         <PlusBtn
                             onPictureClick={() => setshowPictureModal(true)}
                             onYoutudeClick={() => setshowVideoModal(true)}
-                            onSocialClick={() => console.log('s')}
+                            onSocialClick={() => setshowSocialModal(true)}
                         />
 
 
@@ -53,6 +56,11 @@ const Edictor = () => {
                 quillRef={quillRef}
                 isOpen={showVideoModal}
                 onClose={() => setshowVideoModal(false)}
+            />
+            <SocialModal
+                quillRef={quillRef}
+                isOpen={showSocialModal}
+                onClose={() => setshowSocialModal(false)}
             />
         </>
 

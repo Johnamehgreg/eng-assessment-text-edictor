@@ -72,3 +72,13 @@
     hover:text-primaryGreen
     hover:border-primaryGreen  text-black 
 }
+
+.app-input{
+    @apply
+    focus:border-primaryGreen
+    outline-none
+    h-[35px] rounded-[4px] px-2
+    transition bg-backgoundColor
+    text-[12px]
+     border-[1px] w-full border-lightGreen 
+}

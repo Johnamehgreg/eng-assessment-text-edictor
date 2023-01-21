@@ -11,7 +11,7 @@ interface Props {
     quillRef: any
 
 }
-const VideoModal: React.FC<Props> = ({ isOpen, onClose }) => {
+const SocialModal: React.FC<Props> = ({ isOpen, onClose }) => {
 
     return (
         <AppModal
@@ -19,21 +19,30 @@ const VideoModal: React.FC<Props> = ({ isOpen, onClose }) => {
             isOpen={isOpen}
             onClose={onClose}
         >
-           
+
 
             <AppSelect
                 options={list}
-                label='VIDEO PROVIDER'
+                label='SOCIAL MEDIA PLATFORM'
                 onChange={(e: any) => console.log(e)}
             />
 
             <div className="mb-4"></div>
 
             <AppInput
-            options={list}
-            label='VIDEO PROVIDER'
-            onChange={(e: any) => console.log(e)}
+                options={list}
+                label='URL'
+                onChange={(e: any) => console.log(e)}
             />
+            <div className="mb-4"></div>
+
+            <AppInput
+                options={list}
+                label='CODE'
+                onChange={(e: any) => console.log(e)}
+            />
+
+            <p className="text-[10px] mb-2 mt-4">Disable caption </p>
 
             <div className="flex mt-4">
                 <AppBtn
@@ -53,7 +62,8 @@ const VideoModal: React.FC<Props> = ({ isOpen, onClose }) => {
 
 
 let list = [
-    { label: "youtube", value: 'youtube' },
     { label: "Facebook", value: 'Facebook' },
+    { label: "Instagram", value: 'Instagram' },
+    { label: "TikTok", value: 'TikTok' },
 ]
-export default VideoModal
+export default SocialModal
