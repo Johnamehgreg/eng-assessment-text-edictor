@@ -4,7 +4,7 @@ module.exports = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
-],
+  ],
   theme: {
     extend: {
       screens: {
@@ -12,17 +12,11 @@ module.exports = {
         xs: '425px',
       },
       colors: {
-      
-        primaryColor: {
-         100:'#555658'
-        },
 
-        appColorDark:{
-          100:'#777777',
-          200:'#555658',
-          500:'#000000'
-        }
-      
+        borderColor: '#E7F1E9',
+        lightGreen: '#E7F1E9',
+        backgoundColor: '#FAFAFA',
+        primaryGreen: '#0A7227'
       },
       fontSize: {
         xxs: '.625rem',

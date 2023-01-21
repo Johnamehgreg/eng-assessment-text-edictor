@@ -24,7 +24,7 @@ const RootRouter = () => {
 
             const {route, Page} = item
             return (
-              <Route path={route} element={<Page/>} />
+              <Route key={route} path={route} element={<Page/>} />
             )
           })
         }

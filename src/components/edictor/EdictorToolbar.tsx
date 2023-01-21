@@ -57,7 +57,7 @@ export const EdictorToolBar: React.FC<Props> = ({ quillRef }) => {
 
 
     return (
-        <div >
+        <div className="toolbar-wrapper" >
 
             <button onClick={undo}>undo</button> <br />
             <button onClick={handleImagePickerClick}>Image</button><br />

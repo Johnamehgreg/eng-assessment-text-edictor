@@ -1,12 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import 'react-quill/dist/quill.snow.css';
-import './index.css';
-import './styles/main.scss';
-
-
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import './styles/main.scss';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

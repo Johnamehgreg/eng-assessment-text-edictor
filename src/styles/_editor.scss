@@ -1,0 +1,28 @@
+.toolbar-wrapper{
+    @apply flex h-[40px] 
+    border-[1px]
+    border-borderColor 
+    px-2 
+    w-1/2
+    items-center
+    justify-center
+    bg-white
+    mb-3
+    
+
+}
+.ql-container{
+    @apply border-red-200;
+    border: 0px !important;
+}
+
+.ql-toolbar{
+    display: none !important;
+}
+.ql-editor{
+    padding: 0 !important;
+}
+
+.ql-editor.ql-blank::before{
+    left: 0 !important;
+}
