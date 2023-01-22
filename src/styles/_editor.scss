@@ -1,30 +1,30 @@
-// .toolbar-wrapper {
-//     @apply  rounded-[5px] flex w-fit bg-white h-[40px] 
-//     border-[1px] border-lightGreen px-2 items-center mb-3;
+.toolbar-wrapper {
+    @apply  rounded-[5px] flex w-fit bg-white h-[40px] 
+    border-[1px] border-lightGreen px-2 items-center mb-3;
 
-//     .vertical-divider{
-//         @apply border-l-[1px] h-full border-l-borderColor
-//     }
+    .vertical-divider{
+        @apply border-l-[1px] h-full border-l-borderColor
+    }
 
-//     button{
-//         @apply px-2  h-full text-[10px]
-//     }
-// }
+    button{
+        @apply px-2  h-full text-[10px]
+    }
+}
 
 
-// .ql-container {
-//     @apply border-red-200;
-//     border: 0px !important;
-// }
+.ql-container {
+    @apply border-red-200;
+    border: 0px !important;
+}
 
-// .ql-toolbar {
-//     display: none !important;
-// }
+.ql-toolbar {
+    display: none !important;
+}
 
-// .ql-editor {
-//     padding: 0 !important;
-// }
+.ql-editor {
+    padding: 0 !important;
+}
 
-// .ql-editor.ql-blank::before {
-//     left: 0 !important;
-// }
+.ql-editor.ql-blank::before {
+    left: 0 !important;
+}

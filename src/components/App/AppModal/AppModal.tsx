@@ -20,54 +20,60 @@ const AppModal: React.FC<Props> = (props: Props) => {
 
 
 
-    React.useEffect(() => {
-        if (isOpen) {
-            ani1.start({
+    // React.useEffect(() => {
+    //     if (isOpen) {
+    //         ani1.start({
 
-                scale: 1,
-                transition: {
-                    type: 'spring',
-                    duration: 0.3,
-                    bounce: 0.3
-                }
-            })
-        } else {
-            ani1.start({
-                scale: 0,
-                transition: {
-                    type: 'spring',
-                    duration: 0.3,
-                    bounce: 0.3
-                }
-            })
-        }
+    //             scale: 1,
+    //             transition: {
+    //                 type: 'spring',
+    //                 duration: 0.3,
+    //                 bounce: 0.3
+    //             }
+    //         })
+    //     } else {
+    //         ani1.start({
+    //             scale: 0,
+    //             transition: {
+    //                 type: 'spring',
+    //                 duration: 0.3,
+    //                 bounce: 0.3
+    //             }
+    //         })
+    //     }
 
-    }, [isOpen])
+    // }, [isOpen])
 
 
     return (
         <>
 
-            <motion.div
-                className="modal-content scale-0"
-                animate={ani1}>
+            {
+                isOpen && (
+                    <motion.div
+                        className="modal-content "
+                        animate={ani1}>
 
-                <div className="modal-card ">
-                    <div className="flex justify-between  mb-4 items-center">
-                        <p className='text-[14px] font-semibold'>{title} </p>
+                        <div className="modal-card ">
+                            <div className="flex justify-between  mb-4 items-center">
+                                <p className='text-[14px] font-semibold'>{title} </p>
 
-                        <IoCloseSharp 
-                        onClick={onClose}
-                        className='cursor-pointer transition-all hover:scale-110' size={20} />
-                    </div>
+                                <IoCloseSharp
+                                    onClick={onClose}
+                                    className='cursor-pointer transition-all hover:scale-110' size={20} />
+                            </div>
 
 
-                   {
-                    children
-                   }
+                            {
+                                children
+                            }
 
-                </div>
-            </motion.div>
+                        </div>
+                    </motion.div>
+
+                )
+            }
+
 
 
 

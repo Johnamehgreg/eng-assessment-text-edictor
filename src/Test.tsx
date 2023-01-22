@@ -1,38 +1,38 @@
-import { useEffect, useRef } from "react";
-import ReactQuill from "react-quill";
+import { useState } from 'react';
+import { useDropzone } from 'react-dropzone';
 
-const Test = () => {
-    const quillRef = useRef<any>(null);
-    const reactQuillRef = useRef<any>(null);
-  
+function Test() {
+  const [files, setFiles] = useState<any>([]);
+  const { getRootProps, getInputProps } = useDropzone({
+    // accept: 'image/*',
+    onDrop: (acceptedFiles:any) => {
 
-    const handleIframeButton = () => {
-        const iframeSrc = prompt('Enter the iframe src URL:');
-        
-        quillRef.current.clipboard.dangerouslyPasteHTML(`<iframe src="${iframeSrc}"></iframe>`);
-      }
+        console.log(acceptedFiles)
+      setFiles(acceptedFiles.map((file:any) => Object.assign(file, {
+        preview: URL.createObjectURL(file)
+      })));
+    }
+  });
 
-    useEffect(() => {
-        quillRef.current = reactQuillRef.current.getEditor();
-        const toolbar = quillRef.current.getModule('toolbar');
-        toolbar.addHandler('iframe', handleIframeButton);
-      }, []); // empty dependency array ensures this only runs on mount
+  const thumbs = files.map((file:any) => (
+    <div key={file.name}>
+      <div>
+        <img src={file.preview} alt={file.name}/>
+      </div>
+    </div>
+  ));
 
+  return (
+    <section>
+      <div className='w-[300px] h-[300px] bg-red-400' {...getRootProps()}>
+        <input {...getInputProps()} />
+        <p>Drag 'n' drop some files here, or click to select files</p>
+      </div>
+      <aside>
+        {thumbs}
+      </aside>
+    </section>
+  );
+}
 
-    console.log(quillRef.current)
-    return (
-      <>
-      <ReactQuill 
-        ref={reactQuillRef}
-        // modules={{ toolbar: toolbarOptions }}
-
-        
-      />
-
-      <button onClick={() => handleIframeButton()}>Click</button>
-      </>
-    );
-  }
-  
-
-  export default Test
+export default Test;

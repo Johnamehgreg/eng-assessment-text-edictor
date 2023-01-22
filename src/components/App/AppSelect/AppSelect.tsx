@@ -26,7 +26,7 @@ const AppSelect: React.FC<Props> = (props: any) => {
 
   React.useEffect(() => {
     document.addEventListener("mousedown", (event) => {
-      if (!dropDownRef.current.contains(event.target)) {
+      if (!dropDownRef?.current?.contains(event.target)) {
         setshowDropDown(false)
       }
     })
@@ -110,7 +110,7 @@ const AppSelect: React.FC<Props> = (props: any) => {
           <input
 
             onInput={(e: any) => e.target.setCustomValidity("")}
-            className="text-black caret-transparent pointer outline-none bg-transparent  text-[14px]"
+            className="text-black caret-transparent cursor-pointer outline-none bg-transparent  text-[14px]"
             value={vle}
             required={false}
 
@@ -129,6 +129,7 @@ const AppSelect: React.FC<Props> = (props: any) => {
               .map((item: any) => {
                 return (
                   <div
+                  key={item.value}
                     onClick={() => {
                       onSelect(item)
                     }}

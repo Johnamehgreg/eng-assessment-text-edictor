@@ -9,7 +9,7 @@ const HomeUi = () => {
   return (
     <AppWrapper >
       <Edictor />
-
+     
     </AppWrapper>
 
 

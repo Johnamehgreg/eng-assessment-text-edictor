@@ -4,9 +4,10 @@ import React from "react"
 interface Props {
     title:string,
     onClick:() => void,
-    btnMode?:string
+    btnMode?:string,
+    isDisabled?:boolean
 }
-const AppBtn:React.FC<Props> = ({title, btnMode, onClick}) => {
+const AppBtn:React.FC<Props> = ({title, isDisabled, btnMode, onClick}) => {
 
     const btnType = () => {
         switch(btnMode){
@@ -18,8 +19,12 @@ const AppBtn:React.FC<Props> = ({title, btnMode, onClick}) => {
     }
   return (
     <button
-    className={`primary-btn ${btnType()}`}
+    disabled={isDisabled}
+    className={` ${isDisabled ? 'cursor-not-allowed' : 'cursor-pointer'} primary-btn ${btnType()}`}
     onClick={onClick}
+    style={{
+        opacity: isDisabled ? 0.5 : 1
+    }}
     >
       {title}
     </button>

@@ -1,4 +1,5 @@
 
+import AppDropZone from './App/AppDropZone/AppDropZone';
 import AppInput from './App/AppInput/AppInput';
 import AppSelect from './App/AppSelect/AppSelect';
 import AppWrapper from './App/AppWrapper/AppWrapper';
@@ -15,6 +16,7 @@ export {
     Edictor,
     AppBtn,
     AppSelect,
-    AppInput
+    AppInput,
+    AppDropZone
 };
 

@@ -1,15 +1,16 @@
 import React from "react";
+import { VideoType } from "../../constants/edictor";
 import AppInput from "../App/AppInput/AppInput";
 import AppModal from "../App/AppModal/AppModal";
 import AppSelect from "../App/AppSelect/AppSelect";
 import AppBtn from "../button/AppBtn";
+import { VideeArq } from "./editorHook";
 
 
 interface Props {
     isOpen: boolean;
     onClose: () => void;
-    quillRef: any
-
+    handleUploadVideo: (arg: VideeArq) => void;
 }
 const SocialModal: React.FC<Props> = ({ isOpen, onClose }) => {
 
@@ -30,14 +31,14 @@ const SocialModal: React.FC<Props> = ({ isOpen, onClose }) => {
             <div className="mb-4"></div>
 
             <AppInput
-                options={list}
+
                 label='URL'
                 onChange={(e: any) => console.log(e)}
             />
             <div className="mb-4"></div>
 
             <AppInput
-                options={list}
+
                 label='CODE'
                 onChange={(e: any) => console.log(e)}
             />
@@ -62,8 +63,8 @@ const SocialModal: React.FC<Props> = ({ isOpen, onClose }) => {
 
 
 let list = [
-    { label: "Facebook", value: 'Facebook' },
-    { label: "Instagram", value: 'Instagram' },
-    { label: "TikTok", value: 'TikTok' },
+    { label: "Facebook", value: VideoType.FACEBOOK },
+    { label: "Instagram", value: VideoType.INSTAGRAM },
+    { label: "TikTok", value: VideoType.TIKTOK },
 ]
 export default SocialModal
