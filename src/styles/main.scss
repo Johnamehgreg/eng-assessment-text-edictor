@@ -5,6 +5,7 @@
 @use "_color" as *;
 
 *{
+    @apply scroll-smooth;
     font-family: 'Montserrat', sans-serif !important;
 }
 

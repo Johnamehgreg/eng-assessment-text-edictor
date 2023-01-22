@@ -58,7 +58,6 @@ const SocialModal: React.FC<Props> = ({ isOpen, handleUploadVideo, onClose }) =>
         }
 
         if (videoPlatForm.includes(VideoType.FACEBOOK)) {
-            // setvideoUrl(`https://www.tiktok.com/embed/${id}`)
             if (videoUrl.trim().length > 0) {
                 setcode(`<iframe  frameborder="0" allowfullscreen="true" width="100%" height="310" src="https://www.facebook.com/plugins/video.php?href=${videoUrl}"></iframe>`)
             }

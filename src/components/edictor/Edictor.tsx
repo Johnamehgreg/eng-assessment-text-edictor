@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import ReactQuill from "react-quill";
-import { EdictorToolBar, PlusBtn } from '../index';
+import { AppBtn, EdictorToolBar, PlusBtn } from '../index';
 import { useEditorHook } from "./editorHook";
 import PictureModal from "./PictureModal";
 import SocialModal from "./SocialModal";
@@ -40,7 +40,7 @@ const Edictor = () => {
         const quill = reactQuillRef.current.getEditor();
         const range = await quill.getSelection();
 
-        if(range.index) return  setindex(range.index)
+        if (range.index) return setindex(range.index)
 
     };
 
@@ -49,7 +49,7 @@ const Edictor = () => {
         const toolbar = quillRef.current.getModule('toolbar');
         toolbar.addHandler('iframe', handleUploadVideo);
     }, []);
-    
+
 
     const [showPictureModal, setshowPictureModal] = useState(false)
     const [showVideoModal, setshowVideoModal] = useState(false)
@@ -74,13 +74,13 @@ const Edictor = () => {
 
 
                 <div className="h-[20px] border-b-[1px] border-b-borderColor " />
-                <div className="px-2 pb-4">
+                <div className=" h-full flex  flex-col">
                     <EdictorToolBar
                         reactQuillRef={reactQuillRef}
                         onPictureClick={() => setshowPictureModal(true)}
 
                     />
-                    <div className=" overflow-y-scroll h-[70vh]">
+                    <div className=" overflow-y-scroll px-4 h-full">
                         <ReactQuill
                             theme="snow"
                             modules={modules}
@@ -100,7 +100,20 @@ const Edictor = () => {
 
                     </div>
 
+                    <div className="bg-white flex items-center justify-end px-2 h-[40px]" >
+                        <p className="text-[12px]">0/1000 words</p>
+                    </div>
+
                 </div>
+
+
+
+            </div>
+
+            <div className="footer-btn">
+                <AppBtn
+                    onClick={() => alert('jihg')}
+                    title="Post" />
             </div>
 
             <PictureModal
@@ -119,7 +132,7 @@ const Edictor = () => {
                 onClose={() => setshowSocialModal(false)}
             />
 
-         
+
 
         </>
 

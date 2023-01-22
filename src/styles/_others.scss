@@ -1,7 +1,9 @@
 .hero-widget-wrapper  {
     @apply h-full
     w-[100vw] justify-center 
-     pt-[80px] 
+     pt-[60px] 
+     flex-col
+    items-center
     bg-backgoundColor
     flex overflow-hidden;
     // background-color: red;
@@ -10,11 +12,22 @@
 .hero-widget-card {
     @apply w-full 
      rounded-[4px] 
-     py-[24px] 
-     h-[200px]
+     py-[20px] 
+     h-[90%]
+     overflow-hidden
      border-[1px] sm:w-10/12
      md:w-[600px]  border-borderColor ;
 }
+
+.footer-btn{
+    @apply w-full 
+    sm:w-10/12
+    py-3
+    flex justify-end
+     md:w-[600px]  ;
+}
+
+
 
 .plus-btn{
     @apply bg-borderColor  py-2 mt-2 rounded-[50px] px-2
