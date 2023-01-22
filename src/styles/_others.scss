@@ -1,7 +1,7 @@
 .hero-widget-wrapper  {
     @apply h-full
     w-[100vw] justify-center 
-    items-start pt-[80px] 
+     pt-[80px] 
     bg-backgoundColor
     flex overflow-hidden;
     // background-color: red;
@@ -11,8 +11,9 @@
     @apply w-full 
      rounded-[4px] 
      py-[24px] 
+     h-[200px]
      border-[1px] sm:w-10/12
-     md:w-[750px]  border-lightGreen ;
+     md:w-[600px]  border-borderColor ;
 }
 
 .plus-btn{

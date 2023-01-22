@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { VideoType } from "../../constants/edictor";
 import AppInput from "../App/AppInput/AppInput";
 import AppModal from "../App/AppModal/AppModal";
@@ -12,7 +12,70 @@ interface Props {
     onClose: () => void;
     handleUploadVideo: (arg: VideeArq) => void;
 }
-const SocialModal: React.FC<Props> = ({ isOpen, onClose }) => {
+const SocialModal: React.FC<Props> = ({ isOpen, handleUploadVideo, onClose }) => {
+
+    const [videoUrl, setvideoUrl] = useState('')
+    const [code, setcode] = useState('')
+    const [videoPlatForm, setvideoPlatForm] = useState('')
+    const [videoId, setvideoId] = useState<any>(null)
+
+    const onCloseBtn = () => {
+        setvideoId(null)
+        setvideoUrl('')
+        onClose()
+    }
+
+    const handleUpload = () => {
+        handleUploadVideo({ url: videoUrl, iframCode: code, isSocial: true, platformType: videoPlatForm })
+        // onCloseBtn()
+    }
+
+    const getTiktokId = () => {
+        let url = videoUrl
+        var videoId: any
+        if (url?.includes('https://www.tiktok.com')) return videoId = url?.split('video/')[1];
+        var ampersandPosition = videoId?.indexOf('&')
+        if (ampersandPosition != -1) {
+            videoId = videoId?.substring(0, ampersandPosition);
+        }
+        return videoId;
+    }
+
+    const validateUrl = () => {
+
+        if (videoPlatForm.includes(VideoType.TIKTOK)) {
+
+            if (getTiktokId() !== undefined) {
+                let id = getTiktokId().replace(/o/g, "")
+
+                console.log(id)
+                let url = `https://www.tiktok.com/embed/${id}`
+                setcode(`<iframe  frameborder="0" width="100%" height="310" src="${url}"></iframe>`)
+            } else {
+                // setvideoId(null)
+                // setvideoUrl('')
+            }
+        }
+
+        if (videoPlatForm.includes(VideoType.FACEBOOK)) {
+            // setvideoUrl(`https://www.tiktok.com/embed/${id}`)
+            if (videoUrl.trim().length > 0) {
+                setcode(`<iframe  frameborder="0" allowfullscreen="true" width="100%" height="310" src="https://www.facebook.com/plugins/video.php?href=${videoUrl}"></iframe>`)
+            }
+
+        }
+    }
+
+    useEffect(() => {
+        validateUrl()
+    }, [videoUrl, videoPlatForm])
+
+    const handleSelect = (e: any) => {
+        setvideoPlatForm(e.value)
+        setcode('')
+        setvideoUrl('')
+    }
+
 
     return (
         <AppModal
@@ -25,22 +88,22 @@ const SocialModal: React.FC<Props> = ({ isOpen, onClose }) => {
             <AppSelect
                 options={list}
                 label='SOCIAL MEDIA PLATFORM'
-                onChange={(e: any) => console.log(e)}
+                onChange={(e: any) => handleSelect(e)}
             />
 
             <div className="mb-4"></div>
 
             <AppInput
-
+                value={videoUrl}
+                onChange={(e: any) => setvideoUrl(e.target.value)}
                 label='URL'
-                onChange={(e: any) => console.log(e)}
             />
             <div className="mb-4"></div>
 
             <AppInput
-
+                value={code}
                 label='CODE'
-                onChange={(e: any) => console.log(e)}
+                onChange={(e: any) => setcode(e.target.value)}
             />
 
             <p className="text-[10px] mb-2 mt-4">Disable caption </p>
@@ -48,7 +111,7 @@ const SocialModal: React.FC<Props> = ({ isOpen, onClose }) => {
             <div className="flex mt-4">
                 <AppBtn
                     title="Embed"
-                    onClick={() => console.log("File Upload")}
+                    onClick={() => handleUpload()}
                 />
                 <div className="mx-2"></div>
                 <AppBtn

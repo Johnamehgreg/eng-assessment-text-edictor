@@ -11,7 +11,9 @@ interface IEditor {
 export interface VideeArq {
     platformType?: string,
     url?: string,
-    videoId?: string
+    videoId?: string;
+    isSocial?: boolean,
+    iframCode?: string
 }
 
 
@@ -80,7 +82,7 @@ export const useEditorHook = (arg: IEditor) => {
     };
 
     const getUrl = (arg: VideeArq) => {
-        const { videoId, platformType } = arg;
+        const { videoId, platformType,  } = arg;
 
         let url: string = ''
 
@@ -94,26 +96,55 @@ export const useEditorHook = (arg: IEditor) => {
 
         }
 
+    }
 
 
-        return url
+    const getSocilaUrl = (arg: VideeArq) => {
+        let socialUrl: string | undefined = ''
 
+        const { url, platformType,  } = arg;
+
+        let instagram = 'https://www.instagram.com/reel/CnpfY3OIwuM/?utm_source=ig_web_copy_link'
+
+        switch (platformType) {
+            case VideoType.FACEBOOK:
+                return socialUrl = `https://www.facebook.com/plugins/video.php?href=${url}`
+            case VideoType.INSTAGRAM:
+                return socialUrl = `https://www.instagram.com/reel/CnpfY3OIwuM`
+            case VideoType.TIKTOK:
+                return socialUrl = url
+            default:
+                return socialUrl = ''
+
+        }
     }
 
 
 
     const handleUploadVideo = (arg: VideeArq) => {
-        const { videoId, platformType } = arg;
+        const {  isSocial,  iframCode, platformType } = arg;
+        let videoUrl: string | undefined = ''
+        let iframe: string | undefined 
+        console.log(arg)
+        if (isSocial) {
+            videoUrl = getSocilaUrl(arg)
+            iframe = iframCode
+        } else {
+            videoUrl = getUrl(arg)
+            iframe = `<iframe  frameborder="0" allowfullscreen="true" width="100%" height="310" src="${videoUrl}"></iframe>`
+        }
 
         // alert(platformType)
 
-        let url = getUrl(arg)
 
-        let iframe = `<iframe  frameborder="0" allowfullscreen="true" width="100%" height="310" src="${url}"></iframe>`
+
+
         quillRef.current.clipboard.dangerouslyPasteHTML(index, iframe);
 
 
     }
+
+
 
 
 
