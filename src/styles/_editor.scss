@@ -1,5 +1,5 @@
 .toolbar-wrapper {
-    @apply  mt-4 ml-4 rounded-[5px] flex w-fit bg-white h-[40px] 
+    @apply  mt-4 ml-4 rounded-[5px] flex w-full md:w-fit bg-white h-[40px] 
     border-[1px] border-lightGreen px-2 items-center mb-3;
     padding-top: 0 !important;
     padding-bottom: 0 !important;
@@ -9,10 +9,14 @@
     }
 
     button{
-        @apply  text-[10px] h-full;
+        @apply text-[10px] h-full;
 
         // padding: 0 !important;
         margin: 0 !important;
+
+        svg{
+          @apply  scale-75 
+        }
 
         
     }
@@ -25,17 +29,12 @@
     border: 0px !important;
 }
 
-// .ql-toolbar {
-//     display: none !important;
-// }
+
 
 .ql-editor {
     padding: 0 !important;
 }
 
-// .ql-editor.ql-blank::before {
-//     left: 0 !important;
-// }
 
 .ql-editor .ql-video{
     width: 100%;

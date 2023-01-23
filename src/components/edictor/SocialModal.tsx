@@ -27,7 +27,7 @@ const SocialModal: React.FC<Props> = ({ isOpen, handleUploadVideo, onClose }) =>
 
     const handleUpload = () => {
         handleUploadVideo({ url: videoUrl, iframCode: code, isSocial: true, platformType: videoPlatForm })
-        // onCloseBtn()
+        onClose()
     }
 
     const getTiktokId = () => {

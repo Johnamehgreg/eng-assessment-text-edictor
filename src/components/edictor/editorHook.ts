@@ -41,39 +41,10 @@ export const useEditorHook = (arg: IEditor) => {
 
 
 
-    const addBold = () => {
-        let quill = reactQuillRef.current.getEditor();
-        quill.format('bold', true);
-    }
-    const addItalic = () => {
-        let quill = reactQuillRef.current.getEditor();
-        quill.format('italic', true);
-    }
 
     const addBlockQoute = () => {
         let quill = reactQuillRef.current.getEditor();
         quill.format('blockquote', true);
-    }
-
-    const addBulletlist = () => {
-        let quill = reactQuillRef.current.getEditor();
-        quill.format('list', 'bullet');
-    }
-    const addOrderedlist = () => {
-        let quill = reactQuillRef.current.getEditor();
-        quill.format('list', 'ordered');
-    }
-    const addAlignLeft = () => {
-        let quill = reactQuillRef.current.getEditor();
-        quill.format('align', 'left');
-    }
-    const addAlignRight = () => {
-        let quill = reactQuillRef.current.getEditor();
-        quill.format('align', 'right');
-    }
-    const addAlignCenter = () => {
-        let quill = reactQuillRef.current.getEditor();
-        quill.format('align', 'center');
     }
 
 
@@ -161,13 +132,8 @@ export const useEditorHook = (arg: IEditor) => {
     return {
         handleUploadVideo,
         handleImageUpload,
-        addItalic,
-        addBold,
-        addBulletlist,
-        addOrderedlist,
-        addAlignLeft,
-        addAlignRight,
-        addAlignCenter,
+       
+       
         addBlockQoute,
         addLink
     }
