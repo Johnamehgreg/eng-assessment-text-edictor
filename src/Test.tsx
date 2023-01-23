@@ -1,38 +1,52 @@
-import { useState } from 'react';
-import { useDropzone } from 'react-dropzone';
+import React, { useRef, useState } from "react";
+import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
-function Test() {
-  const [files, setFiles] = useState<any>([]);
-  const { getRootProps, getInputProps } = useDropzone({
-    // accept: 'image/*',
-    onDrop: (acceptedFiles:any) => {
+interface Props{
+    reactQuillRef:any
+}
 
-        console.log(acceptedFiles)
-      setFiles(acceptedFiles.map((file:any) => Object.assign(file, {
-        preview: URL.createObjectURL(file)
-      })));
+const CustomYoutubeUpload:React.FC<Props> = ({reactQuillRef}) => {
+  const [youtubeUrl, setYoutubeUrl] = useState<any>("");
+
+  const handleYoutubeUrl = (e:any) => {
+    setYoutubeUrl(e.target.value);
+  };
+
+  const insertYoutube = () => {
+    if (!youtubeUrl) {
+      return;
     }
-  });
-
-  const thumbs = files.map((file:any) => (
-    <div key={file.name}>
-      <div>
-        <img src={file.preview} alt={file.name}/>
-      </div>
-    </div>
-  ));
+    // Extract the video ID from the URL
+    const videoId = youtubeUrl.match(/v=([^&]+)/)[1];
+    // Get the quill instance
+    const quill = reactQuillRef.current.getEditor();
+    // Insert the video into the editor
+    quill.insertEmbed(quill.getSelection().index, "video", `https://www.youtube.com/embed/${videoId}`);
+    // Clear the video URL field
+    setYoutubeUrl("");
+  };
 
   return (
-    <section>
-      <div className='w-[300px] h-[300px] bg-red-400' {...getRootProps()}>
-        <input {...getInputProps()} />
-        <p>Drag 'n' drop some files here, or click to select files</p>
-      </div>
-      <aside>
-        {thumbs}
-      </aside>
-    </section>
+    <div className="youtube-upload">
+      <input
+        type="text"
+        placeholder="Enter YouTube video URL"
+        onChange={handleYoutubeUrl}
+      />
+      <button onClick={insertYoutube}>Insert Video</button>
+    </div>
   );
-}
+};
+
+const Test = () => {
+  const reactQuillRef = useRef(null);
+  return (
+    <div>
+      <CustomYoutubeUpload reactQuillRef={reactQuillRef} />
+      <ReactQuill ref={reactQuillRef} />
+    </div>
+  );
+};
 
 export default Test;

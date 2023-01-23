@@ -1,4 +1,5 @@
-import { VideoType } from "../../constants/edictor";
+import { useCallback } from "react";
+import { VideoType } from "../../constants/editor";
 
 
 interface IEditor {
@@ -23,9 +24,19 @@ export const useEditorHook = (arg: IEditor) => {
     const quill = reactQuillRef?.current?.getEditor();
 
 
-    const scrollToEnd = () => {
-        reactQuillRef.current.getEditor().setSelection(reactQuillRef.current.getEditor().getLength(), reactQuillRef.current.getEditor().getLength());
+    const scrollToEnd = (index: number | undefined) => {
+        const quill = reactQuillRef.current.getEditor();
+        const bounds = quill.getBounds(index);
+        quill.root.parentNode.scrollBottom = bounds.bottom;
     }
+
+    const addLink = useCallback((value: string) => {
+        const quill = reactQuillRef.current.getEditor();
+        let selected = quill.getSelection();
+        if (selected) {
+            quill.format('link', value);
+        }
+    }, []);
 
 
 
@@ -82,7 +93,7 @@ export const useEditorHook = (arg: IEditor) => {
     };
 
     const getUrl = (arg: VideeArq) => {
-        const { videoId, platformType,  } = arg;
+        const { videoId, platformType, } = arg;
 
         let url: string = ''
 
@@ -102,7 +113,7 @@ export const useEditorHook = (arg: IEditor) => {
     const getSocilaUrl = (arg: VideeArq) => {
         let socialUrl: string | undefined = ''
 
-        const { url, platformType,  } = arg;
+        const { url, platformType, } = arg;
 
         let instagram = 'https://www.instagram.com/reel/CnpfY3OIwuM/?utm_source=ig_web_copy_link'
 
@@ -122,16 +133,16 @@ export const useEditorHook = (arg: IEditor) => {
 
 
     const handleUploadVideo = (arg: VideeArq) => {
-        const {  isSocial,  iframCode, platformType } = arg;
+        const { isSocial, iframCode, platformType } = arg;
         let videoUrl: string | undefined = ''
-        let iframe: string | undefined 
+        let iframe: string | undefined
         console.log(arg)
         if (isSocial) {
             videoUrl = getSocilaUrl(arg)
             iframe = iframCode
         } else {
             videoUrl = getUrl(arg)
-            iframe = `<iframe  frameborder="0" allowfullscreen="true" width="100%" height="310" src="${videoUrl}"></iframe>`
+            iframe = `<iframe     src="${videoUrl}"></iframe>`
         }
 
         // alert(platformType)
@@ -140,8 +151,7 @@ export const useEditorHook = (arg: IEditor) => {
 
 
         quillRef.current.clipboard.dangerouslyPasteHTML(index, iframe);
-
-
+        // scrollToEnd(index)
     }
 
 
@@ -158,6 +168,7 @@ export const useEditorHook = (arg: IEditor) => {
         addAlignLeft,
         addAlignRight,
         addAlignCenter,
-        addBlockQoute
+        addBlockQoute,
+        addLink
     }
 }

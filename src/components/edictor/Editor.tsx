@@ -1,31 +1,17 @@
 import { useEffect, useRef, useState } from "react";
 import ReactQuill from "react-quill";
-import { AppBtn, EdictorToolBar, PlusBtn } from '../index';
+import { AppBtn, PlusBtn } from '../index';
 import { useEditorHook } from "./editorHook";
+import EditorToolBar from "./EditorToolbar";
 import PictureModal from "./PictureModal";
 import SocialModal from "./SocialModal";
 import VideoModal from "./VideoModal";
 
 
-const modules = {
-    toolbar: {
-        container: [
-            ['bold', 'italic', 'underline', 'strike'],
-            ['blockquote', 'code-block'],
-            [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-            [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-            [{ 'color': [] }, { 'background': [] }],
-            [{ 'align': [] }],
-            ['clean']
-        ],
-    }
 
 
 
-};
-
-
-const Edictor = () => {
+const Editor = () => {
 
     const [state, setState] = useState({ value: '' });
 
@@ -55,7 +41,16 @@ const Edictor = () => {
     const [showVideoModal, setshowVideoModal] = useState(false)
     const [showSocialModal, setshowSocialModal] = useState(false)
 
+    useEffect(() => {
+        const quill = reactQuillRef.current.getEditor();
+        quill.formatText(0, 1, 'header', 2);
+        quill.formatText(0, 1, 'bold', true);
+    }, []);
 
+    const addAlignLeft = () => {
+        let quill = reactQuillRef.current.getEditor();
+        quill.format('align', 'right');
+    }
 
 
 
@@ -68,6 +63,9 @@ const Edictor = () => {
 
     return (
         <>
+
+
+
             <div className='hero-widget-card' >
 
 
@@ -75,7 +73,7 @@ const Edictor = () => {
 
                 <div className="h-[20px] border-b-[1px] border-b-borderColor " />
                 <div className=" h-full flex  flex-col">
-                    <EdictorToolBar
+                    <EditorToolBar
                         reactQuillRef={reactQuillRef}
                         onPictureClick={() => setshowPictureModal(true)}
 
@@ -84,6 +82,7 @@ const Edictor = () => {
                         <ReactQuill
                             theme="snow"
                             modules={modules}
+                            formats={formats}
                             ref={reactQuillRef}
                             value={state.value}
                             onChange={handleChange}
@@ -141,4 +140,31 @@ const Edictor = () => {
     )
 }
 
-export default Edictor
+let modules = {
+    toolbar: {
+        container: "#toolbar-11"
+    }
+};
+
+let formats = [
+    "header",
+    "font",
+    "size",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+    "video",
+    "color",
+    "align",
+];
+
+
+export default Editor
+

@@ -5,7 +5,7 @@
      flex-col
     items-center
     bg-backgoundColor
-    flex overflow-hidden;
+    flex overflow-y-hidden;
     // background-color: red;
 }
 
@@ -14,7 +14,7 @@
      rounded-[4px] 
      py-[20px] 
      h-[90%]
-     overflow-hidden
+     overflow-y-hidden
      border-[1px] sm:w-10/12
      md:w-[600px]  border-borderColor ;
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { VideoType } from "../../constants/edictor";
+import { VideoType } from "../../constants/editor";
 import AppInput from "../App/AppInput/AppInput";
 import AppModal from "../App/AppModal/AppModal";
 import AppSelect from "../App/AppSelect/AppSelect";

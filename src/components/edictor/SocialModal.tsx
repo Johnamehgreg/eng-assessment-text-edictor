@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { VideoType } from "../../constants/edictor";
+import { VideoType } from "../../constants/editor";
 import AppInput from "../App/AppInput/AppInput";
 import AppModal from "../App/AppModal/AppModal";
 import AppSelect from "../App/AppSelect/AppSelect";
@@ -60,6 +60,12 @@ const SocialModal: React.FC<Props> = ({ isOpen, handleUploadVideo, onClose }) =>
         if (videoPlatForm.includes(VideoType.FACEBOOK)) {
             if (videoUrl.trim().length > 0) {
                 setcode(`<iframe  frameborder="0" allowfullscreen="true" width="100%" height="310" src="https://www.facebook.com/plugins/video.php?href=${videoUrl}"></iframe>`)
+            }
+
+        }
+        if (videoPlatForm.includes(VideoType.INSTAGRAM)) {
+            if (videoUrl.trim().length > 0) {
+                setcode(`<iframe  frameborder="0" allowfullscreen="true" width="100%" height="310" src="${videoUrl}"></iframe>`)
             }
 
         }
